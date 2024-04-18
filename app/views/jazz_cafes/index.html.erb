@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Jazz cafes</h1>
+
+<div id="jazz_cafes">
+  <% @jazz_cafes.each do |jazz_cafe| %>
+    <%= render jazz_cafe %>
+    <p>
+      <%= link_to "Show this jazz cafe", jazz_cafe %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New jazz cafe", new_jazz_cafe_path %>

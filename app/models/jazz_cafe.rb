@@ -1,0 +1,2 @@
+class JazzCafe < ApplicationRecord
+end
