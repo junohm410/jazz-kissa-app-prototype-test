@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @jazz_cafe %>
+
+<div>
+  <%= link_to "Edit this jazz cafe", edit_jazz_cafe_path(@jazz_cafe) %> |
+  <%= link_to "Back to jazz cafes", jazz_cafes_path %>
+
+  <%= button_to "Destroy this jazz cafe", @jazz_cafe, method: :delete %>
+</div>
