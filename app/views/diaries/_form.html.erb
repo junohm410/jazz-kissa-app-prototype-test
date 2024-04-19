@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :jazz_cafe_id, style: "display: block" %>
+    <%= form.select :jazz_cafe_id, jazz_cafe_options %>
+  </div>
+
+  <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
