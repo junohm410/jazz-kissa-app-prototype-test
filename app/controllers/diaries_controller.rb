@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all
+    @diaries = Diary.all.includes(:jazz_cafe)
   end
 
   # GET /diaries/1 or /diaries/1.json
