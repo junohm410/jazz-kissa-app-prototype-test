@@ -1,14 +1,13 @@
 class DiariesController < ApplicationController
-  before_action :set_diary, only: %i[ show edit update destroy ]
+  before_action :set_diary, only: %i[show edit update destroy]
 
   # GET /diaries or /diaries.json
   def index
-    @diaries = Diary.all.includes(:jazz_cafe)
+    @diaries = Diary.includes(:jazz_cafe)
   end
 
   # GET /diaries/1 or /diaries/1.json
-  def show
-  end
+  def show; end
 
   # GET /diaries/new
   def new
@@ -16,8 +15,7 @@ class DiariesController < ApplicationController
   end
 
   # GET /diaries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /diaries or /diaries.json
   def create
@@ -58,13 +56,14 @@ class DiariesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_diary
-      @diary = Diary.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def diary_params
-      params.require(:diary).permit(:title, :body, :jazz_cafe_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_diary
+    @diary = Diary.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def diary_params
+    params.require(:diary).permit(:title, :body, :jazz_cafe_id)
+  end
 end

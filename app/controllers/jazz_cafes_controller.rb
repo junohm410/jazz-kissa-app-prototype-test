@@ -1,5 +1,5 @@
 class JazzCafesController < ApplicationController
-  before_action :set_jazz_cafe, only: %i[ show edit update destroy ]
+  before_action :set_jazz_cafe, only: %i[show edit update destroy]
 
   # GET /jazz_cafes or /jazz_cafes.json
   def index
@@ -7,8 +7,7 @@ class JazzCafesController < ApplicationController
   end
 
   # GET /jazz_cafes/1 or /jazz_cafes/1.json
-  def show
-  end
+  def show; end
 
   # GET /jazz_cafes/new
   def new
@@ -16,8 +15,7 @@ class JazzCafesController < ApplicationController
   end
 
   # GET /jazz_cafes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /jazz_cafes or /jazz_cafes.json
   def create
@@ -58,13 +56,14 @@ class JazzCafesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_jazz_cafe
-      @jazz_cafe = JazzCafe.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def jazz_cafe_params
-      params.require(:jazz_cafe).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_jazz_cafe
+    @jazz_cafe = JazzCafe.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def jazz_cafe_params
+    params.require(:jazz_cafe).permit(:name)
+  end
 end
