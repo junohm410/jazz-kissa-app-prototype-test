@@ -1,0 +1,24 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+    - "db/schema.rb"
+    - 'bin/*'
+    - 'config/initializers/**/*'
+    - 'config/environments/*'
+    - 'public/**/*'
+    - 'storage/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+
+Style/Documentation:
+  Enabled: false
