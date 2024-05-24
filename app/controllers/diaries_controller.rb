@@ -15,11 +15,14 @@ class DiariesController < ApplicationController
   end
 
   # GET /diaries/1/edit
-  def edit; end
+  def edit
+    @jazz_cafe_name = @diary.jazz_cafe.name
+  end
 
   # POST /diaries or /diaries.json
   def create
     @diary = Diary.new(diary_params)
+    @diary.jazz_cafe = JazzCafe.find_or_create_by!(name: params[:diary][:jazz_cafe_name])
 
     respond_to do |format|
       if @diary.save
@@ -34,8 +37,10 @@ class DiariesController < ApplicationController
 
   # PATCH/PUT /diaries/1 or /diaries/1.json
   def update
+    jazz_cafe = JazzCafe.find_or_create_by!(name: params[:diary][:jazz_cafe_name])
+
     respond_to do |format|
-      if @diary.update(diary_params)
+      if @diary.update(diary_params.merge(jazz_cafe_id: jazz_cafe.id))
         format.html { redirect_to diary_url(@diary), notice: "Diary was successfully updated." }
         format.json { render :show, status: :ok, location: @diary }
       else
@@ -64,6 +69,6 @@ class DiariesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def diary_params
-    params.require(:diary).permit(:body, :jazz_cafe_id)
+    params.require(:diary).permit(:body)
   end
 end
