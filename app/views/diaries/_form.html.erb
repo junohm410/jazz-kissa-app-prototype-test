@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :record_title, style: "display: block" %>
+    <%= form.text_field :record_title, value: @record_title %>
+  </div>
+
+  <div>
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
