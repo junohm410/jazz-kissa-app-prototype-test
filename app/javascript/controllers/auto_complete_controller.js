@@ -50,5 +50,27 @@ export default class extends Controller {
         }
       }
     })
+
+    const artistComplete = new autoComplete({
+      placeHolder: "アーティスト名を入力してください",
+      selector: "#artistComplete",
+      data: {
+        src: async (query) => {
+          const res = await fetch(`/api/artists?query=${query}`);
+          return await res.json();
+        }
+      },
+      resultItem: {
+        highlight: true
+      },
+      events: {
+        input: {
+          selection: (event) => {
+            const selection = event.detail.selection.value;
+            artistComplete.input.value = selection;
+          }
+        }
+      }
+    })
   }
 }

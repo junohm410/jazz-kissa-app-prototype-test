@@ -4,4 +4,8 @@
     <%= record.title %>
   </p>
 
+  <p>
+    <strong>Artist:</strong>
+    <%= link_to record.artist.name, artist_path(record.artist) if record.artist %>
+  </p>
 </div>

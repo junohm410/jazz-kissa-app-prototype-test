@@ -18,13 +18,15 @@ class DiariesController < ApplicationController
   def edit
     @jazz_cafe_name = @diary.jazz_cafe.name
     @record_title = @diary.record.title
+    @artist_name = @diary.record.artist&.name
   end
 
   # POST /diaries or /diaries.json
   def create
     @diary = Diary.new(diary_params)
     @diary.jazz_cafe = JazzCafe.find_or_create_by!(name: params[:diary][:jazz_cafe_name])
-    @diary.record = Record.find_or_create_by!(title: params[:diary][:record_title])
+    artist = Artist.find_or_create_by!(name: params[:diary][:artist_name])
+    @diary.record = Record.find_or_create_by!(title: params[:diary][:record_title], artist_id: artist.id)
 
     respond_to do |format|
       if @diary.save
@@ -40,7 +42,8 @@ class DiariesController < ApplicationController
   # PATCH/PUT /diaries/1 or /diaries/1.json
   def update
     jazz_cafe = JazzCafe.find_or_create_by!(name: params[:diary][:jazz_cafe_name])
-    record = Record.find_or_create_by!(title: params[:diary][:record_title])
+    artist = Artist.find_or_create_by!(name: params[:diary][:artist_name])
+    record = Record.find_or_create_by!(title: params[:diary][:record_title], artist_id: artist.id)
 
     respond_to do |format|
       if @diary.update(diary_params.merge(jazz_cafe_id: jazz_cafe.id, record_id: record.id))
