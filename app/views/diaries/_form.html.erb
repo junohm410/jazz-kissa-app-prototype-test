@@ -13,7 +13,17 @@
 
   <div>
     <%= form.label :jazz_cafe_name, style: "display: block" %>
-    <%= form.text_field :jazz_cafe_name, value: @jazz_cafe_name, id: "autoComplete" %>
+    <%= form.text_field :jazz_cafe_name, value: @jazz_cafe_name, id: "jazzCafeComplete" %>
+  </div>
+
+  <div>
+    <%= form.label :record_title, style: "display: block" %>
+    <%= form.text_field :record_title, value: @record_title, id: "recordComplete" %>
+  </div>
+
+  <div>
+    <%= form.label :artist_name, style: "display: block" %>
+    <%= form.text_field :artist_name, value: @artist_name, id: "artistComplete" %>
   </div>
 
   <div>

@@ -1,0 +1,15 @@
+<div id="<%= dom_id artist %>">
+  <p>
+    <strong>Name:</strong>
+    <%= artist.name %>
+  </p>
+
+  <p>
+    <strong>Records:</strong>
+    <% artist.records&.each do |record| %>
+      <ul>
+        <li><%= record.title %></li>
+      </ul>
+    <% end %>
+  </p>
+</div>

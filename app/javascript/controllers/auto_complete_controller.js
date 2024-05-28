@@ -4,9 +4,9 @@ import autoComplete from "@tarekraafat/autocomplete.js";
 // Connects to data-controller="auto-complete"
 export default class extends Controller {
   connect() {
-    console.log('Hello from auto_complete_controller.js');
-    const autoCompleteJS = new autoComplete({
+    const jazzCafeComplete = new autoComplete({
       placeHolder: "ジャズ喫茶を入力してください",
+      selector: "#jazzCafeComplete",
       data: {
         src: async (query) => {
           const res = await fetch(`/api/jazz_cafes?query=${query}`);
@@ -23,7 +23,51 @@ export default class extends Controller {
         input: {
           selection: (event) => {
             const selection = event.detail.selection.value;
-            autoCompleteJS.input.value = selection;
+            jazzCafeComplete.input.value = selection;
+          }
+        }
+      }
+    })
+
+    const recordComplete = new autoComplete({
+      placeHolder: "レコード名を入力してください",
+      selector: "#recordComplete",
+      data: {
+        src: async (query) => {
+          const res = await fetch(`/api/records?query=${query}`);
+          return await res.json();
+        }
+      },
+      resultItem: {
+        highlight: true
+      },
+      events: {
+        input: {
+          selection: (event) => {
+            const selection = event.detail.selection.value;
+            recordComplete.input.value = selection;
+          }
+        }
+      }
+    })
+
+    const artistComplete = new autoComplete({
+      placeHolder: "アーティスト名を入力してください",
+      selector: "#artistComplete",
+      data: {
+        src: async (query) => {
+          const res = await fetch(`/api/artists?query=${query}`);
+          return await res.json();
+        }
+      },
+      resultItem: {
+        highlight: true
+      },
+      events: {
+        input: {
+          selection: (event) => {
+            const selection = event.detail.selection.value;
+            artistComplete.input.value = selection;
           }
         }
       }

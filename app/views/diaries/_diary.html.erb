@@ -5,6 +5,16 @@
   </p>
 
   <p>
+    <strong>Record:</strong>
+    <%= diary.record&.title %>
+  </p>
+
+  <p>
+    <strong>Artist:</strong>
+    <%= link_to diary.record.artist.name, artist_path(diary.record.artist) if diary.record&.artist %>
+  </p>
+
+  <p>
     <strong>Body:</strong>
     <%= diary.body %>
   </p>

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  resources :artists
+  resources :records
   resources :jazz_cafes
   resources :diaries
 
   namespace :api do
     resources :jazz_cafes, only: [:index]
+    resources :records, only: [:index]
+    resources :artists, only: [:index]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
