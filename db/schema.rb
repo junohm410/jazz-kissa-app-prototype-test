@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_054040) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_085553) do
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -41,6 +41,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_054040) do
     t.integer "artist_id"
     t.index ["artist_id"], name: "index_records_on_artist_id"
     t.index ["title", "artist_id"], name: "index_records_on_title_and_artist_id", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   add_foreign_key "diaries", "jazz_cafes"
