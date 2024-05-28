@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_scope :user do
+    delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
   resources :artists
   resources :records
   resources :jazz_cafes
@@ -17,6 +21,4 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root 'home#index'
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
 end
