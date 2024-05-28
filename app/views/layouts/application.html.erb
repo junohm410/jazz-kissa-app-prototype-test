@@ -15,10 +15,10 @@
       <% if current_user %>
         <%= image_tag current_user.image_url %>
         <%= current_user.name %>さん
-        <%= link_to "ログアウト", logout_path %>
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% else  %>
         ゲストさん
-        <%= button_to "Googleでログイン", "/auth/google_oauth2", data: { turbo: false } %>
+        <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false } %>
       <% end %>
     </header>
     <%= yield %>

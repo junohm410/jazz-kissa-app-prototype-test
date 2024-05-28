@@ -1,9 +1,10 @@
 class User < ApplicationRecord
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
+
   validates :provider, presence: true
   validates :uid, presence: true
   validates :name, presence: true
   validates :image_url, presence: true
-
   validates :uid, uniqueness: { scope: :provider }
 
   def self.find_or_create_from_auth_hash!(auth_hash)
